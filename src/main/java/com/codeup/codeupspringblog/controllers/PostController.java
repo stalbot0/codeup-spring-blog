@@ -1,28 +1,29 @@
 package com.codeup.codeupspringblog.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
+@Controller
+@RequestMapping(path = "/posts")
+@ResponseBody
 public class PostController {
 
-    @GetMapping("/posts")
+    @GetMapping
     public String postsIndex() {
         return "posts/index";
     }
 
-    @GetMapping("/posts/{id}")
+    @GetMapping("/{id}")
     public String viewIndividualPost(@PathVariable long id) {
         return String.format("posts/%d", id);
     }
 
-    @GetMapping("/posts/create")
+    @GetMapping("/create")
     public String GETcreatePost() {
         return "posts/create";
     }
 
-    @PostMapping("/posts/create")
+    @PostMapping("/create")
     public String POSTcreatePost() {
         return "posts/create";
     }

@@ -25,14 +25,6 @@ public class RollingDiceController {
         int randomNum = x.nextInt(1, 7);
         model.addAttribute("randomDie", randomNum);
 
-//        String dieMessage;
-//        if(n == randomNum) {
-//            dieMessage = String.format("You guessed correctly. You guessed %d, I rolled a %d", n, randomNum);
-//        } else {
-//            dieMessage = String.format("You guessed incorrectly. You guessed %d, I rolled a %d", n, randomNum);
-//        }
-//        model.addAttribute("dieMessage", dieMessage);
-
         return "roll-dice-result";
     }
 

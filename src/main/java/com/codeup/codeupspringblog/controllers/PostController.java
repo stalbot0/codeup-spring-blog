@@ -1,7 +1,12 @@
 package com.codeup.codeupspringblog.controllers;
 
+import models.Post;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping(path = "/posts")
@@ -28,4 +33,17 @@ public class PostController {
         return "posts/create";
     }
 
+    @GetMapping
+    public String allPosts(Model model) {
+        List<Post> posts = new ArrayList<>();
+        posts.add(new Post(1, "title1", "body1"));
+        posts.add(new Post(2, "title2", "body2"));
+        model.addAttribute("posts", posts);
+        return "posts/index";
+    }
+
+    @GetMapping("/{postId}")
+    public String viewOnePost(@PathVariable long postId) {
+        return "hello";
+    }
 }

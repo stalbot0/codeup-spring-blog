@@ -1,6 +1,7 @@
 package com.codeup.codeupspringblog.controllers;
 
-import models.Post;
+import com.codeup.codeupspringblog.models.Post;
+import com.codeup.codeupspringblog.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,12 @@ import java.util.List;
 @Controller
 @RequestMapping(path = "/posts")
 public class PostController {
+
+    private final PostRepository postsDao;
+
+    public PostController(PostRepository postsDao) {
+        this.postsDao = postsDao;
+    }
 
 //    @GetMapping
 //    public String postsIndex() {
@@ -23,21 +30,22 @@ public class PostController {
 //    }
 
     @GetMapping("/create")
-    public String GETcreatePost() {
+    public String GETcreatePost(Model model) {
+        model.addAttribute("post", new Post());
         return "posts/create";
     }
 
     @PostMapping("/create")
-    public String POSTcreatePost() {
-        return "posts/create";
+    public String POSTcreatePost(@ModelAttribute("post") Post post) {
+        postsDao.save(post);
+        return "redirect:/posts";
     }
 
     @GetMapping
     public String allPosts(Model model) {
-        List<Post> posts = new ArrayList<>();
-        posts.add(new Post(1, "title1", "body1"));
-        posts.add(new Post(2, "title2", "body2"));
-        model.addAttribute("posts", posts);
+        model.addAttribute("posts", postsDao.findAll());
+//        List<Post> allPosts = postsDao.findAll();
+//        System.out.println(allPosts);
         return "posts/index";
     }
 

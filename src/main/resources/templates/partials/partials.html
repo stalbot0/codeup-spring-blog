@@ -6,10 +6,14 @@
 </head>
 <body>
 <nav th:fragment="navbar" class="navbar navbar-light bg-light">
-    <div>Links Here!</div>
-    <a th:href="@{/}"></a>
-    <a th:href="@{/posts}"></a>
-    <a th:href="@{/roll-dice}"></a>
+    <div>
+        <h1>Links Here!</h1>
+        <ul>
+            <li><a th:href="@{/}">Landing Page</a></li>
+            <li><a th:href="@{/posts}">Posts</a></li>
+            <li><a th:href="@{/roll-dice}">Roll The Dice!</a></li>
+        </ul>
+    </div>
 </nav>
 
 <footer th:fragment="footer">

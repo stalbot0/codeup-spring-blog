@@ -10,18 +10,17 @@ import java.util.List;
 
 @Controller
 @RequestMapping(path = "/posts")
-@ResponseBody
 public class PostController {
 
-    @GetMapping
-    public String postsIndex() {
-        return "posts/index";
-    }
+//    @GetMapping
+//    public String postsIndex() {
+//        return "posts/index";
+//    }
 
-    @GetMapping("/{id}")
-    public String viewIndividualPost(@PathVariable long id) {
-        return String.format("posts/%d", id);
-    }
+//    @GetMapping("/{id}")
+//    public String viewIndividualPost(@PathVariable long id) {
+//        return String.format("posts/%d", id);
+//    }
 
     @GetMapping("/create")
     public String GETcreatePost() {
@@ -43,7 +42,8 @@ public class PostController {
     }
 
     @GetMapping("/{postId}")
-    public String viewOnePost(@PathVariable long postId) {
-        return "hello";
+    public String viewOnePost(@PathVariable long postId, Model model) {
+        model.addAttribute("post", new Post(postId, "titlenewpost", "bodynewpost"));
+        return "posts/show";
     }
 }

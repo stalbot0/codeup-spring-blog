@@ -6,7 +6,7 @@
 <body>
 <nav th:replace="~{partials/partials :: navbar}"></nav>
 
-<div class="container-fluid mx-3">
+<div class="container-fluid">
     <div class="card m-3" style="width: 20em;" th:each="post : ${posts}">
         <a class="card-anchor" th:href="@{/posts/{id}(id=${post.id})}">
             <div class="card-body">

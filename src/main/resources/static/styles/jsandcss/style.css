@@ -1,0 +1,15 @@
+a.card-anchor {
+    text-decoration: none;
+    color: black;
+    border: 1px solid rgba(82, 82, 82, 0.6);
+    border-radius: 0.25em;
+    background-image: linear-gradient(dodgerblue, dodgerblue), linear-gradient(#ffffff, #ffffff);
+    background-size: 0 5px, auto;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    transition: all .2s ease-out;
+}
+/* https://codepen.io/davecross/pen/dpNrQg */
+a.card-anchor:hover {
+    background-size: 100% 5px, auto;
+}

@@ -40,7 +40,7 @@ public class PostController {
     }
 
     @PostMapping("/create")
-    public String POSTcreatePost(@ModelAttribute("post") Post post, Model model) {
+    public String POSTcreatePost(@ModelAttribute("post") Post post) {
         User testUser = usersDao.findById(1L).get();
         post.setUser(testUser);
         postsDao.save(post);
@@ -57,7 +57,10 @@ public class PostController {
 
     @GetMapping("/{postId}")
     public String viewOnePost(@PathVariable long postId, Model model) {
-        model.addAttribute("post", new Post(postId, "titlenewpost", "bodynewpost", new User()));
+        Post testPost = postsDao.findById(postId).get();
+        model.addAttribute("post", testPost);
+        User testUser = usersDao.findById(1L).get();
+        model.addAttribute("user", testUser);
         return "posts/show";
     }
 }

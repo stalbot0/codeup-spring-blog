@@ -6,10 +6,12 @@
 <body>
 <nav th:replace="~{partials/partials :: navbar}"></nav>
 
-<div>
-    <div th:text="${post}"></div>
+<div class="container-fluid">
+    <h1>Post:</h1>
+    <div th:text="${post.title}"></div>
+    <div th:text="${post.body}"></div>
 <!--    attempting to display users email with the post also    -->
-<!--    <div th:text="${}"></div>-->
+    <div>Email: <span th:text="${user.email}"></span></div>
 </div>
 
 <footer th:replace="~{partials/partials :: footer}"></footer>

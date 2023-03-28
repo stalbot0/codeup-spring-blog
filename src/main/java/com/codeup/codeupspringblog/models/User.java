@@ -27,5 +27,7 @@ public class User {
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    @ToString.Exclude
+//    ^this will allow us to avoid infinite recursion because the ToString lombok methods continuously call one another
     private List<Post> posts;
 }

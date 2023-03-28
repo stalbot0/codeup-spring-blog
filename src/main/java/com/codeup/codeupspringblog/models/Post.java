@@ -22,6 +22,7 @@ public class Post {
     private String body;
 
     @ManyToOne
+    @ToString.Exclude
     @JoinColumn(name = "user_id")
     private User user;
 }

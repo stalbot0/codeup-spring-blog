@@ -17,17 +17,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String username;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String email;
 
     @Column(nullable = false)
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    @ToString.Exclude
-//    ^this will allow us to avoid infinite recursion because the ToString lombok methods continuously call one another
+//    for many to many, use CascadeType.PERSIST instead
     private List<Post> posts;
 }

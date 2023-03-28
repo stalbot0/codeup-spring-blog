@@ -36,6 +36,7 @@ public class PostController {
     @GetMapping("/create")
     public String GETcreatePost(Model model) {
         model.addAttribute("post", new Post());
+
         return "posts/create";
     }
 
@@ -44,14 +45,13 @@ public class PostController {
         User testUser = usersDao.findById(1L).get();
         post.setUser(testUser);
         postsDao.save(post);
+
         return "redirect:/posts";
     }
 
     @GetMapping
     public String allPosts(Model model) {
         model.addAttribute("posts", postsDao.findAll());
-//        List<Post> allPosts = postsDao.findAll();
-//        System.out.println(allPosts);
         return "posts/index";
     }
 
@@ -59,8 +59,10 @@ public class PostController {
     public String viewOnePost(@PathVariable long postId, Model model) {
         Post testPost = postsDao.findById(postId).get();
         model.addAttribute("post", testPost);
-        User testUser = usersDao.findById(1L).get();
-        model.addAttribute("user", testUser);
+
+        String testUserEmail = testPost.getUser().getEmail();
+        model.addAttribute("userEmail", testUserEmail);
+
         return "posts/show";
     }
 }

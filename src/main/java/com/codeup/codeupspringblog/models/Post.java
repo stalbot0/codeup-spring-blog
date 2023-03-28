@@ -23,6 +23,7 @@ public class Post {
 
     @ManyToOne
     @ToString.Exclude
+//    ^this will allow us to avoid infinite recursion because the ToString lombok methods continuously call one another
     @JoinColumn(name = "user_id")
     private User user;
 }

@@ -60,9 +60,6 @@ public class PostController {
         Post testPost = postsDao.findById(postId).get();
         model.addAttribute("post", testPost);
 
-        String testUserEmail = testPost.getUser().getEmail();
-        model.addAttribute("userEmail", testUserEmail);
-
         return "posts/show";
     }
 }

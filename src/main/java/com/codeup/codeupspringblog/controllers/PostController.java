@@ -8,9 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 @RequestMapping(path = "/posts")
 public class PostController {
@@ -25,11 +22,13 @@ public class PostController {
 
 //    @GetMapping
 //    public String postsIndex() {
+//
 //        return "posts/index";
 //    }
 
 //    @GetMapping("/{id}")
 //    public String viewIndividualPost(@PathVariable long id) {
+//
 //        return String.format("posts/%d", id);
 //    }
 
@@ -52,6 +51,7 @@ public class PostController {
     @GetMapping
     public String allPosts(Model model) {
         model.addAttribute("posts", postsDao.findAll());
+
         return "posts/index";
     }
 

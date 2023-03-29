@@ -17,7 +17,8 @@
             <textarea type="text" id="body" th:field="*{body}"></textarea>
         </div>
         <div>
-            <input type="submit" class="btn btn-primary" value="Submit Create">
+            <input type="hidden" th:field="*{id}">
+            <input type="submit" class="btn btn-primary" value="Submit Post">
         </div>
     </div>
 </form>

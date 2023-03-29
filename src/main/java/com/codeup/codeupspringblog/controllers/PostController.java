@@ -40,6 +40,7 @@ public class PostController {
 
     @PostMapping("/create")
     public String POSTcreatePost(@ModelAttribute("post") Post post) {
+//        for now, we're hard coding the id until we get into security, so that specific users will be able to create posts associated with their account
         User testUser = usersDao.findById(1L).get();
         post.setUser(testUser);
         postsDao.save(post);
@@ -50,18 +51,18 @@ public class PostController {
     public String GETeditPost(@PathVariable long postId, Model model) {
         Post post = postsDao.findById(postId).get();
         model.addAttribute("post", post);
-        return "posts/edit";
+        return "posts/create";
     }
 
-    @PostMapping("/{postId}/edit")
-    public String POSTeditPost(@PathVariable long postId, @ModelAttribute("post") Post post) {
-//        how do I do this using the model attribute for the new post that we have added at the "GET"
-        Post testPost = postsDao.findById(postId).get();
-        testPost.setTitle(post.getTitle());
-        testPost.setBody(post.getBody());
-        postsDao.save(testPost);
-        return "redirect:/posts";
-    }
+//    @PostMapping("/{postId}/edit")
+//    public String POSTeditPost(@PathVariable long postId, @ModelAttribute("post") Post post) {
+////        how do I do this using the model attribute for the new post that we have added at the "GET"
+//        Post testPost = postsDao.findById(postId).get();
+//        testPost.setTitle(post.getTitle());
+//        testPost.setBody(post.getBody());
+//        postsDao.save(testPost);
+//        return "redirect:/posts";
+//    }
 
     @GetMapping("/{postId}/delete")
     public String GETdeletePost(@PathVariable long postId, Model model) {

@@ -35,7 +35,6 @@ public class PostController {
     @GetMapping("/create")
     public String GETcreatePost(Model model) {
         model.addAttribute("post", new Post());
-
         return "posts/create";
     }
 
@@ -44,14 +43,29 @@ public class PostController {
         User testUser = usersDao.findById(1L).get();
         post.setUser(testUser);
         postsDao.save(post);
+        return "redirect:/posts";
+    }
 
+    @GetMapping("/{postId}/edit")
+    public String GETeditPost(@PathVariable long postId, Model model) {
+        Post post = postsDao.findById(postId).get();
+        model.addAttribute("post", post);
+        return "posts/edit";
+    }
+
+    @PostMapping("/{postId}/edit")
+    public String POSTeditPost(@PathVariable long postId, @ModelAttribute("post") Post post) {
+//        how do I do this using the model attribute for the new post that we have added at the "GET"
+        Post testPost = postsDao.findById(postId).get();
+        testPost.setTitle(post.getTitle());
+        testPost.setBody(post.getBody());
+        postsDao.save(testPost);
         return "redirect:/posts";
     }
 
     @GetMapping
     public String allPosts(Model model) {
         model.addAttribute("posts", postsDao.findAll());
-
         return "posts/index";
     }
 
@@ -59,7 +73,6 @@ public class PostController {
     public String viewOnePost(@PathVariable long postId, Model model) {
         Post testPost = postsDao.findById(postId).get();
         model.addAttribute("post", testPost);
-
         return "posts/show";
     }
 }

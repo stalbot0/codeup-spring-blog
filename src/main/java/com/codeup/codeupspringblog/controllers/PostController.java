@@ -63,6 +63,21 @@ public class PostController {
         return "redirect:/posts";
     }
 
+    @GetMapping("/{postId}/delete")
+    public String GETdeletePost(@PathVariable long postId, Model model) {
+        Post post = postsDao.findById(postId).get();
+        model.addAttribute("post", post);
+        return "posts/delete";
+    }
+
+    @PostMapping("/{postId}/delete")
+    public String POSTdeletePost(@PathVariable long postId, @ModelAttribute("post") Post post) {
+//        how do I do this using the model attribute for the new post that we have added at the "GET"
+        Post testPost = postsDao.findById(postId).get();
+        postsDao.deleteById(testPost.getId());
+        return "redirect:/posts";
+    }
+
     @GetMapping
     public String allPosts(Model model) {
         model.addAttribute("posts", postsDao.findAll());

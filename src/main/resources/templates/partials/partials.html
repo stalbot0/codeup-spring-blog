@@ -2,23 +2,44 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:fragment="head">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.css">
     <link rel="stylesheet" th:href="@{/styles/jsandcss/style.css}">
     <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css}">
 </head>
 <body>
 <nav th:fragment="navbar" class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-        <h1>Links Here!</h1>
-        <ul>
-            <li><a th:href="@{/}">Landing Page</a></li>
-            <li><a th:href="@{/posts}">Posts</a></li>
-            <li><a th:href="@{/posts/create}">Create a Post!</a></li>
-            <li><a th:href="@{/roll-dice}">Roll The Dice!</a></li>
-        </ul>
+    <div class="container-fluid d-flex justify-content-between mx-3">
+        <div style="width: 21em" class="text-center row">
+            <div class="col-4 m-auto p-0"><i class="fa-sharp fa-solid fa-leaf leaf-icon"></i></div>
+            <div class="col-8 my-auto fs-1 p-0">Spring Blog</div>
+        </div>
+        <div style="width: 20em">
+            <div class="text-center">
+                <div><a th:href="@{/}">HOME</a></div>
+                <div><a th:href="@{/posts}">POSTS</a></div>
+                <div><a th:href="@{/posts/create}">CREATE POST</a></div>
+                <div><a th:href="@{/roll-dice}">ROLL DICE</a></div>
+            </div>
+        </div>
+        <div style="width: 20em" class="text-center">
+            <a href="">LOG IN</a>
+            <a href="">GET STARTED</a>
+        </div>
     </div>
 </nav>
 
-<footer th:fragment="footer"></footer>
+<footer th:fragment="footer" class="p-3">
+    <div class="d-flex justify-content-evenly footer-div mx-auto">
+        <a href=""><i class="fa-solid fa-square-envelope fs-2 mx-2"></i></a>
+        <a href=""><i class="fa-brands fa-square-twitter fs-2 mx-2"></i></a>
+        <a href=""><i class="fa-brands fa-square-facebook fs-2 mx-2"></i></a>
+        <a href=""><i class="fa-brands fa-square-instagram fs-2 mx-2"></i></a>
+    </div>
+    <div class="text-center">
+        <a href="https://www.flaticon.com/free-icons/leaf" title="leaf icons">Leaf icons created by Freepik -
+            Flaticon</a>
+    </div>
+</footer>
 <div th:fragment="scripts">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </div>

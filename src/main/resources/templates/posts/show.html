@@ -10,9 +10,11 @@
     <h1>Post:</h1>
     <div th:text="${post.title}"></div>
     <div th:text="${post.body}"></div>
-<!--    attempting to display users email with the post also    -->
     <div>Email: <span th:text="${post.user.email}"></span></div>
-    <a th:href="@{/posts/{id}/edit(id=${post.id})}">Edit Post</a>
+    <ul>
+        <li><a th:href="@{/posts/{id}/edit(id=${post.id})}">Edit Post</a></li>
+        <li><a th:href="@{/posts/{id}/delete(id=${post.id})}">Delete Post</a></li>
+    </ul>
 </div>
 
 <footer th:replace="~{partials/partials :: footer}"></footer>

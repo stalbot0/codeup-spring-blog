@@ -49,3 +49,15 @@ body {
     padding-bottom: 6em;
 }
 
+.nav-footer-a {
+    text-decoration: none;
+    text-decoration-color: #73c21e;
+    color: black;
+    transition: all .2s ease-out;
+}
+
+.nav-footer-a:hover {
+    text-decoration: underline;
+    text-decoration-color: #73c21e;
+}
+

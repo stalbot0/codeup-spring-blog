@@ -15,25 +15,25 @@
         </div>
         <div style="width: 20em">
             <div class="text-center">
-                <div><a th:href="@{/}">HOME</a></div>
-                <div><a th:href="@{/posts}">POSTS</a></div>
-                <div><a th:href="@{/posts/create}">CREATE POST</a></div>
-                <div><a th:href="@{/roll-dice}">ROLL DICE</a></div>
+                <div><a class="nav-footer-a" th:href="@{/}">HOME</a></div>
+                <div><a class="nav-footer-a" th:href="@{/posts}">POSTS</a></div>
+                <div><a class="nav-footer-a" th:href="@{/posts/create}">CREATE POST</a></div>
+                <div><a class="nav-footer-a" th:href="@{/roll-dice}">ROLL DICE</a></div>
             </div>
         </div>
         <div style="width: 20em" class="text-center">
-            <a href="">LOG IN</a>
-            <a href="">GET STARTED</a>
+            <a class="nav-footer-a" href="">LOG IN</a>
+            <a class="nav-footer-a" href="">GET STARTED</a>
         </div>
     </div>
 </nav>
 
 <footer th:fragment="footer" class="p-3">
     <div class="d-flex justify-content-evenly footer-div mx-auto">
-        <a href=""><i class="fa-solid fa-square-envelope fs-2 mx-2"></i></a>
-        <a href=""><i class="fa-brands fa-square-twitter fs-2 mx-2"></i></a>
-        <a href=""><i class="fa-brands fa-square-facebook fs-2 mx-2"></i></a>
-        <a href=""><i class="fa-brands fa-square-instagram fs-2 mx-2"></i></a>
+        <a href=""><i class="fa-solid fa-square-envelope fs-2 mx-2 nav-footer-a"></i></a>
+        <a href=""><i class="fa-brands fa-square-twitter fs-2 mx-2 nav-footer-a"></i></a>
+        <a href=""><i class="fa-brands fa-square-facebook fs-2 mx-2 nav-footer-a"></i></a>
+        <a href=""><i class="fa-brands fa-square-instagram fs-2 mx-2 nav-footer-a"></i></a>
     </div>
     <div class="text-center">
         <a href="https://www.flaticon.com/free-icons/leaf" title="leaf icons">Leaf icons created by Freepik -

@@ -5,10 +5,13 @@ import com.codeup.codeupspringblog.models.User;
 import com.codeup.codeupspringblog.repositories.PostRepository;
 import com.codeup.codeupspringblog.repositories.UserRepository;
 import com.codeup.codeupspringblog.services.EmailService;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+@RequiredArgsConstructor
 @Controller
 @RequestMapping(path = "/posts")
 public class PostController {
@@ -17,11 +20,11 @@ public class PostController {
     private final UserRepository usersDao;
     private final EmailService emailService;
 
-    public PostController(PostRepository postsDao, UserRepository usersDao, EmailService emailService) {
-        this.postsDao = postsDao;
-        this.usersDao = usersDao;
-        this.emailService = emailService;
-    }
+//    public PostController(PostRepository postsDao, UserRepository usersDao, EmailService emailService) {
+//        this.postsDao = postsDao;
+//        this.usersDao = usersDao;
+//        this.emailService = emailService;
+//    }
 
 //    @GetMapping
 //    public String postsIndex() {

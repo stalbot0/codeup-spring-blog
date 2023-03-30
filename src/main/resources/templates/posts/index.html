@@ -7,12 +7,13 @@
 <nav th:replace="~{partials/partials :: navbar}"></nav>
 
 <div class="container-fluid body-div">
-    <div class="card m-3" style="width: 20em;" th:each="post : ${posts}">
+    <div class="card m-3" th:each="post : ${posts}">
         <a class="card-anchor" th:href="@{/posts/{id}(id=${post.id})}">
             <div class="card-body">
-                <div>Post <span th:text="${post.id}"></span></div>
-                <hr>
-                <div>Blog: <span th:text="${post.title}"></span></div>
+                <div><span th:text="${post.user.username}"></span></div>
+                <hr class="mx-auto my-2">
+                <div class="blog-post-title">Blog: <span class="span-post-title" th:text="${post.title}"></span></div>
+                <hr class="mx-auto my-2">
                 <div class="card-body overflow-div" th:text="${post.body}"></div>
             </div>
         </a>

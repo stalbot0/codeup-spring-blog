@@ -36,7 +36,7 @@ footer {
 }
 
 i.leaf-icon {
-    font-size: 4em;
+    font-size: 5em;
     margin: auto;
     padding: 0;
 }
@@ -51,6 +51,7 @@ body {
 }
 
 .nav-footer-a {
+    font-family: 'Staatliches', sans-serif;
     font-size: 1.2em;
     text-decoration: none;
     text-decoration-color: #73c21e;
@@ -78,7 +79,16 @@ div.overflow-div {
     padding: 0;
 }
 
-.link-font {
-    font-family: 'Staatliches', sans-serif;
+.footer-icon {
+    text-decoration: none;
+    color: black;
+    font-size: 2em;
+    margin: 0 1em;
+}
+
+.footer-icon:hover {
+    text-decoration: none;
+    color: #73c21e;
+    transition: 0.25s ease-out;
 }
 

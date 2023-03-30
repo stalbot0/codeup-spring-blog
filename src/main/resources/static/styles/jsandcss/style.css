@@ -10,12 +10,12 @@ a.card-anchor {
     background-size: 0 5px, auto;
     background-repeat: no-repeat;
     background-position: bottom;
-    transition: all .2s ease-out;
+    transition: all .1s ease-out;
 }
 /* https://codepen.io/davecross/pen/dpNrQg */
 a.card-anchor:hover {
     background-size: 100% 8px, auto;
-    box-shadow: 0 0 20px rgba(33,33,33,.2);
+    /*box-shadow: 0 0 rgba(33,33,33,.2);*/
 }
 
 ul {
@@ -55,29 +55,30 @@ body {
     text-decoration: none;
     text-decoration-color: #73c21e;
     color: black;
-    transition: all .2s ease-out;
 }
 
 .nav-footer-a:hover {
     text-decoration: underline 0.15em;
     text-decoration-color: #73c21e;
+    transition: .1s ease-in-out;
 }
+
+ .attribution {
+    font-size: 0.75em;
+ }
 
 div.overflow-div {
     text-align: left;
     width: 100%;
     min-height: 3em;
-    max-height: 8em;
-    overflow: auto;
+    max-height: 7.8em;
+    overflow: scroll;
     padding: 0 0.5em 0 0;
     margin: 0;
     /*!*white-space: nowrap;*! this is used for horizontal scroll only*/
 }
 
 .blog-post-title {
-    height: 2em;
-    overflow: auto;
-    white-space: nowrap;
     padding: .25em 0 0 0;
 }
 
@@ -97,13 +98,12 @@ div.row {
     font-family: 'Palanquin Dark', sans-serif;
     font-size: 3.5em;
     margin: 0 auto;
-    transition: 0.25s ease-in;
 }
 
 .spring-blog-nav-header:hover {
     text-decoration: none;
     color: #73c21e;
-    transition: 0.25s ease-out;
+    transition: 0.15s ease-in-out;
 }
 
 .footer-icon {
@@ -111,12 +111,27 @@ div.row {
     color: black;
     font-size: 2em;
     margin: 0 1em;
-    transition: 0.25s ease-in;
 }
 
 .footer-icon:hover {
     text-decoration: none;
     color: #73c21e;
-    transition: 0.25s ease-out;
+    transition: 0.1s ease-in-out;
 }
 
+/*always show scroll bars*/
+/*::-webkit-scrollbar {*/
+/*    -webkit-appearance: none;*/
+/*    width: 7px;*/
+/*}*/
+
+/*::-webkit-scrollbar-thumb {*/
+/*    border-radius: .5em;*/
+/*    background-color: rgba(0, 0, 0, .5);*/
+/*    box-shadow: 0 0 1px rgba(255, 255, 255, .5);*/
+/*}*/
+
+.navbar-custom {
+    height: 8em;
+    background-color: white;
+}

@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@500&family=Staatliches&display=swap" rel="stylesheet">
 </head>
 <body>
-<nav th:fragment="navbar" class="navbar navbar-light bg-light">
+<nav th:fragment="navbar" class="navbar navbar-custom">
     <div class="container-fluid d-flex justify-content-between mx-3">
         <div class="row">
             <div class="col-3 text-center m-auto"><i class="fa-sharp fa-solid fa-leaf leaf-icon"></i></div>
@@ -21,7 +21,7 @@
                 <div><a class="nav-footer-a" th:href="@{/}">HOME</a></div>
                 <div><a class="nav-footer-a" th:href="@{/posts}">POSTS</a></div>
                 <div><a class="nav-footer-a" th:href="@{/posts/create}">CREATE POST</a></div>
-                <div><a class="nav-footer-a" th:href="@{/roll-dice}">ROLL DICE</a></div>
+<!--                <div><a class="nav-footer-a" th:href="@{/roll-dice}">ROLL DICE</a></div>-->
             </div>
         </div>
         <div style="width: 30em" class="text-end">
@@ -39,7 +39,7 @@
         <a href=""><i class="fa-brands fa-square-instagram footer-icon"></i></a>
     </div>
     <div class="text-center">
-        <a href="https://www.flaticon.com/free-icons/leaf" title="leaf icons" class="nav-footer-a my-2">Leaf icons created by Freepik -
+        <a href="https://www.flaticon.com/free-icons/leaf" title="leaf icons" class="nav-footer-a attribution my-2">Leaf icons created by Freepik -
             Flaticon</a>
     </div>
 </footer>

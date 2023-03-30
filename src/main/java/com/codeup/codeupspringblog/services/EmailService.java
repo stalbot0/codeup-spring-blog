@@ -31,4 +31,5 @@ public class EmailService {
             System.err.println(ex.getMessage());
         }
     }
+//    figure out a way to get the input from the user to insert into the email that is being sent and create a form for it
 }

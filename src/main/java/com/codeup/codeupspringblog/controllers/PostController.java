@@ -7,6 +7,7 @@ import com.codeup.codeupspringblog.repositories.UserRepository;
 import com.codeup.codeupspringblog.services.EmailService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -47,8 +48,9 @@ public class PostController {
     @PostMapping("/create")
     public String POSTcreatePost(@ModelAttribute("post") Post post) {
 //        for now, we're hard coding the id until we get into security, so that specific users will be able to create posts associated with their account
-        User testUser = usersDao.findById(1L).get();
-        post.setUser(testUser);
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User testUser = usersDao.findById(1L).get();
+        post.setUser(loggedInUser);
         postsDao.save(post);
 
         emailService.prepareAndSend(post, "Hi, this is a third email", "Testing testing 3 hellooooo");
@@ -99,4 +101,14 @@ public class PostController {
         model.addAttribute("post", testPost);
         return "posts/show";
     }
+
+//    private User getLoggedInUser() {
+//        User user = new User();
+//        try {
+//            user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        } catch (Exception e){
+//            user.setUsername("");
+//        }
+//        return user;
+//    }
 }

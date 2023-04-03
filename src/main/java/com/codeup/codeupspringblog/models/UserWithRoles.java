@@ -12,7 +12,7 @@ public class UserWithRoles extends User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        String roles = "";
+        String roles = ""; //not giving any roles bc we aren't working with authorization yet
         return null;
     }
 

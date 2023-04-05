@@ -123,10 +123,10 @@ public class CodeupSpringBlogApplicationTests {
         // Gets the first Ad for tests purposes
         Post existingPost = postsDao.findAll().get(2);
 
-        // Makes a Post request to /posts/{id}/edit and expect a redirection to the Ad show page
+        // Makes a Post request to /posts/create and expect a redirection to the post show page
         this.mvc.perform(
                         MockMvcRequestBuilders.post("/posts/create").with(csrf()).session((MockHttpSession) httpSession)
-                                .param("id", "17")
+                                .param("id", String.valueOf(existingPost.getId())).with(csrf()).session((MockHttpSession) httpSession)
                                 .param("title", "edited title")
                                 .param("body", "edited body"))
                 .andExpect(status().is3xxRedirection());
@@ -149,12 +149,12 @@ public class CodeupSpringBlogApplicationTests {
                                 .param("body", "deleting this post"))
                 .andExpect(status().is3xxRedirection());
 
-        //test delete the post
+        //test delete the newly created post
         Post deletingPost = postsDao.getByTitle("deleting this post");
 
         this.mvc.perform(
                         MockMvcRequestBuilders.post("/posts/" + deletingPost.getId() + "/delete").with(csrf()).session((MockHttpSession) httpSession)
-                                .param("postId", String.valueOf(deletingPost.getId())))
+                                .param("postId", String.valueOf(deletingPost.getId())).with(csrf()).session((MockHttpSession) httpSession))
                 .andExpect(status().is3xxRedirection());
     }
 }

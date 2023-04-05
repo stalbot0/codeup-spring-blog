@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -85,8 +86,7 @@ public class CodeupSpringBlogApplicationTests {
     public void testCreateAd() throws Exception {
         // Makes a Post request to /posts/create and expect a redirection to the post
         this.mvc.perform(
-                        MockMvcRequestBuilders.post("/posts/create").with(csrf())
-                                .session((MockHttpSession) httpSession)
+                        MockMvcRequestBuilders.post("/posts/create").with(csrf()).session((MockHttpSession) httpSession)
                                 // Add all the required parameters to your request like this
                                 .param("title", "test title")
                                 .param("body", "test body for sale"))
@@ -94,21 +94,23 @@ public class CodeupSpringBlogApplicationTests {
     }
 
     @Test
+    @WithMockUser
     public void testShowAd() throws Exception {
         Post existingPost = postsDao.findAll().get(0);
 
         // Makes a Get request to /ads/{id} and expect a redirection to the Ad show page
-        this.mvc.perform(MockMvcRequestBuilders.get("/posts/" + existingPost.getId()))
+        this.mvc.perform(MockMvcRequestBuilders.get("/posts/" + existingPost.getId()).with(csrf()).session((MockHttpSession) httpSession))
                 .andExpect(status().isOk())
                 // Test the dynamic content of the page
                 .andExpect(MockMvcResultMatchers.content().string(containsString(existingPost.getBody())));
     }
 
     @Test
+    @WithMockUser
     public void testAdsIndex() throws Exception {
         Post existingPost = postsDao.findAll().get(0);
         // Makes a Get request to /ads and verifies that we get some of the static text of the ads/index.html template and at least the title from the first Ad is present in the template.
-        this.mvc.perform(MockMvcRequestBuilders.get("/posts"))
+        this.mvc.perform(MockMvcRequestBuilders.get("/posts").with(csrf()).session((MockHttpSession) httpSession))
                 .andExpect(status().isOk())
                 // Test the static content of the page
                 .andExpect(MockMvcResultMatchers.content().string(containsString(existingPost.getBody())))
@@ -123,8 +125,7 @@ public class CodeupSpringBlogApplicationTests {
 
         // Makes a Post request to /posts/{id}/edit and expect a redirection to the Ad show page
         this.mvc.perform(
-                        MockMvcRequestBuilders.post("/posts/create").with(csrf())
-                                .session((MockHttpSession) httpSession)
+                        MockMvcRequestBuilders.post("/posts/create").with(csrf()).session((MockHttpSession) httpSession)
                                 .param("id", "17")
                                 .param("title", "edited title")
                                 .param("body", "edited body"))
@@ -142,8 +143,7 @@ public class CodeupSpringBlogApplicationTests {
     public void testDeleteAd() throws Exception {
         //create a post to be deleted
         this.mvc.perform(
-                        MockMvcRequestBuilders.post("/posts/create").with(csrf())
-                                .session((MockHttpSession) httpSession)
+                        MockMvcRequestBuilders.post("/posts/create").with(csrf()).session((MockHttpSession) httpSession)
                                 // Add all the required parameters to your request like this
                                 .param("title", "deleting this post")
                                 .param("body", "deleting this post"))
@@ -153,8 +153,7 @@ public class CodeupSpringBlogApplicationTests {
         Post deletingPost = postsDao.getByTitle("deleting this post");
 
         this.mvc.perform(
-                        MockMvcRequestBuilders.post("/posts/" + deletingPost.getId() + "/delete").with(csrf())
-                                .session((MockHttpSession) httpSession)
+                        MockMvcRequestBuilders.post("/posts/" + deletingPost.getId() + "/delete").with(csrf()).session((MockHttpSession) httpSession)
                                 .param("postId", String.valueOf(deletingPost.getId())))
                 .andExpect(status().is3xxRedirection());
     }
